@@ -39,6 +39,8 @@ dependencies {
     val retrofitVersion = "3.0.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    //picasso
+    implementation("com.squareup.picasso:picasso:2.8")
 
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
