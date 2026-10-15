@@ -5,13 +5,24 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recyclerViewMain"
-       android:layout_height="match_parent"
        android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+
        tools:listitem="@layout/item_game"/>
 
+   <com.google.android.material.bottomnavigation.BottomNavigationView
+       android:id="@+id/bottomNavigationView"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:menu="@menu/activity_main_navigation_menu"
+       app:backgroundTint="@color/md_theme_secondaryContainer_highContrast"
+       app:itemIconTint="@color/md_theme_onBackground_mediumContrast"
+       app:itemTextColor="@color/md_theme_onPrimary"/>
 
 </LinearLayout>

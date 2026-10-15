@@ -35,9 +35,22 @@ class MainActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
+        //ACTION BAR
+        val titulo = android.text.SpannableString(getString(R.string.main_title))
+        titulo.setSpan(
+            android.text.style.ForegroundColorSpan(androidx.core.content.ContextCompat.getColor(this, R.color.md_theme_onPrimary)),
+            0, titulo.length, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        supportActionBar?.title = titulo
+        supportActionBar?.setBackgroundDrawable(
+            android.graphics.drawable.ColorDrawable(
+                androidx.core.content.ContextCompat.getColor(this,R.color.md_theme_secondaryContainer_highContrast)
+            )
+        )
+
         //CONFIGURAMOS EL ADAPTER RECYCLER VIEW
         adapter = GameAdapter(gameList){ position ->
             val game = gameList[position]

@@ -14,7 +14,8 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
         app:cardElevation="4dp"
-        app:strokeWidth="1dp">
+        app:strokeWidth="1dp"
+        android:backgroundTint="@color/md_theme_outlineVariant">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +23,7 @@
             <ImageView
                 android:id="@+id/thumbnailImageView"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
+                android:layout_height="200dp"
                 android:src="@drawable/ic_launcher_background"
                 android:scaleType="centerCrop"/>
             <LinearLayout
@@ -36,14 +37,16 @@
                     android:layout_height="wrap_content"
                     tool:text="Game title"
                     android:textSize="24sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/md_theme_tertiaryFixed_highContrast"/>
                 <TextView
                     android:id="@+id/descriptionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tool:text="Game short description..."
                     android:textSize="18sp"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/md_theme_tertiaryFixedDim_highContrast"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,9 +57,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tool:text="Genre"
-                        android:textColor="@color/white"
+                        android:textColor="@color/md_theme_onPrimary"
                         android:clickable="false"
-                        app:chipBackgroundColor="@color/genre_game_main"
+                        app:chipBackgroundColor="@color/md_theme_onPrimaryContainer"
                         app:ensureMinTouchTargetSize="false"
                         />
                     <Space
@@ -64,11 +67,17 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
                     <ImageView
-                        android:id="@+id/platformImageView"
+                        android:id="@+id/platformPCImageView"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_platform_web"
+                        app:tint="@color/md_theme_onPrimaryContainer"/>
+                    <ImageView
+                        android:id="@+id/platformWebImageView"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:src="@drawable/ic_platform_pc"
-                        app:tint="@color/genre_game_main"/>
+                        app:tint="@color/md_theme_onPrimaryContainer"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

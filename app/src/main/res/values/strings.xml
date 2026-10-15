@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FreeGames-Android</string>
     <string name="menu_search">Search</string>
+    <string name="main_title">Free Games</string>
+    <string name="nav_label_games">Games</string>
+    <string name="nav_label_library">Library</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.mirellageri.freegames_android.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mirellageri.freegames_android.R
@@ -40,12 +41,24 @@ class GameViewHolder(val binding: ItemGameBinding ): RecyclerView.ViewHolder(bin
         binding.descriptionTextView.text = game.shortDescription
         binding.genreChip.text = game.genre
 
-        val platformResId = if(game.platform.contains("Windows")){
-            R.drawable.ic_platform_pc
-        }else{
-            R.drawable.ic_platform_web
+       when(game.platform){
+           "PC (Windows), Web Browser" ->{
+               binding.platformPCImageView.setImageResource(R.drawable.ic_platform_pc)
+               binding.platformPCImageView.visibility = View.VISIBLE
+               binding.platformWebImageView.setImageResource(R.drawable.ic_platform_web)
+               binding.platformWebImageView.visibility = View.VISIBLE
+           }
+           "PC (Windows)"->  {
+               binding.platformPCImageView.setImageResource(R.drawable.ic_platform_pc)
+               binding.platformPCImageView.visibility = View.VISIBLE
+               binding.platformWebImageView.visibility = View.GONE
+           }
+           "Web Browser" -> {
+               binding.platformWebImageView.setImageResource(R.drawable.ic_platform_web)
+               binding.platformWebImageView.visibility = View.VISIBLE
+               binding.platformPCImageView.visibility = View.GONE
+           }
         }
-        binding.platformImageView.setImageResource(platformResId)
         Picasso.get().load(game.thumbnail).into(binding.thumbnailImageView)
     }
 }
