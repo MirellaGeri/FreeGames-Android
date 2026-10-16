@@ -1,5 +1,6 @@
 package com.mirellageri.freegames_android.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -15,6 +16,7 @@ import com.mirellageri.freegames_android.adapters.GameAdapter
 import com.mirellageri.freegames_android.data.FreeToGameApi
 import com.mirellageri.freegames_android.data.Game
 import com.mirellageri.freegames_android.databinding.ActivityMainBinding
+import com.mirellageri.freegames_android.utils.SessionManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,8 +25,10 @@ import retrofit2.Retrofit
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     lateinit var adapter : GameAdapter
+    lateinit var session: SessionManager
     var gameList: List<Game> = emptyList()
     var filteredgameList: List<Game> = emptyList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,12 +36,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         //setContentView(R.layout.activity_main)
         setContentView(binding.root)
+        //SESSION
+        session = SessionManager(this)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
+
         //ACTION BAR
         val titulo = android.text.SpannableString(getString(R.string.main_title))
         titulo.setSpan(
@@ -52,9 +59,11 @@ class MainActivity : AppCompatActivity() {
         )
 
         //CONFIGURAMOS EL ADAPTER RECYCLER VIEW
-        adapter = GameAdapter(gameList){ position ->
-            val game = gameList[position]
-            Toast.makeText(this,game.title, Toast.LENGTH_SHORT).show()
+        adapter = GameAdapter(gameList, session){ position ->
+            val game = filteredgameList[position]
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.EXTRA_GAME_ID, game.id)
+            startActivity(intent)
         }
         binding.recyclerViewMain.adapter = adapter
         binding.recyclerViewMain.layoutManager = LinearLayoutManager(this)

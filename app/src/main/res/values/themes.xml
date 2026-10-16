@@ -4,4 +4,18 @@
         <!-- Customize your light theme here. -->
     </style>
     <style name="Theme.FreeGamesAndroid" parent="Base.Theme.FreeGamesAndroid" />
+
+    <style name="FreeGames.Label" parent="Widget.AppCompat.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/md_theme_primary</item>
+    </style>
+
+    <style name="FreeGames.SystemRequirements.Label" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="FreeGames.SystemRequirements.Value" parent="Widget.AppCompat.TextView">
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

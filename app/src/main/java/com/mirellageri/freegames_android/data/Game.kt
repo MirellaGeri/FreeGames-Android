@@ -8,6 +8,21 @@ data class Game (
     @SerializedName("title") val title: String,
     @SerializedName("thumbnail") val thumbnail: String,
     @SerializedName("short_description") val shortDescription:String,
+    @SerializedName("description") val description:String?,
     @SerializedName("genre") val genre: String,
-    @SerializedName("platform") val platform : String
+    @SerializedName("platform") val platform : String,
+    @SerializedName("freetogame_profile_url") val profileUrl: String,
+    @SerializedName("game_url") val gameUrl : String,
+    @SerializedName("screenshots") val screenshots : List<Screenshot>?,
+    @SerializedName("minimum_system_requirememts") val systemRequirements: SystemRequirements?
+)
+data class Screenshot(
+    @SerializedName("image") val image : String
+)
+data class SystemRequirements(
+    @SerializedName("os") val os: String,
+    @SerializedName("processor") val processor :String,
+    @SerializedName("memory") val memory :String,
+    @SerializedName("graphics") val graphics: String,
+    @SerializedName("storage") val storage : String
 )

@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mirellageri.freegames_android.R
 import com.mirellageri.freegames_android.data.Game
 import com.mirellageri.freegames_android.databinding.ItemGameBinding
+import com.mirellageri.freegames_android.utils.SessionManager
 import com.squareup.picasso.Picasso
 
 class GameAdapter(
     var items: List<Game>,
+    val sessionManager: SessionManager,
     val onItemClick:(position : Int) -> Unit
 ): RecyclerView.Adapter<GameViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
