@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_today"
+        android:id="@+id/menu_game"
         android:title="@string/nav_label_games"
         android:icon="@drawable/ic_game"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/menu_weekly"
+        android:id="@+id/menu_library"
         android:title="@string/nav_label_library"
-        android:icon="@drawable/ic_library"
+        android:icon="@drawable/ic_favorite"
         app:showAsAction="always"/>
 </menu>

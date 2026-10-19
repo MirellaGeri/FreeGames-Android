@@ -66,6 +66,7 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:src="@drawable/ic_platform_web"
+                        android:visibility="gone"
                         app:tint="@color/md_theme_onPrimaryContainer"/>
                     <ImageView
                         android:id="@+id/platformWebImageView"
@@ -138,66 +139,66 @@
                     style="@style/FreeGames.SystemRequirements.Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="OS" />
+                    android:text="@string/detail_label_OS" />
 
                 <TextView
                     android:id="@+id/systemRequirementsOsTextView"
                     style="@style/FreeGames.SystemRequirements.Value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Windows 11" />
+                    tools:text="Windows 11" />
 
                 <TextView
                     style="@style/FreeGames.SystemRequirements.Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Processor" />
+                    android:text="@string/detail_label_processor" />
 
                 <TextView
                     android:id="@+id/systemRequirementsProcessorTextView"
                     style="@style/FreeGames.SystemRequirements.Value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Intel Core i3" />
+                    tools:text="Intel Core i3" />
 
                 <TextView
                     style="@style/FreeGames.SystemRequirements.Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Memory" />
+                    android:text="@string/detail_label_memory" />
 
                 <TextView
                     android:id="@+id/systemRequirementsMemoryTextView"
                     style="@style/FreeGames.SystemRequirements.Value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="6 GB RAM" />
+                    tools:text="6 GB RAM" />
 
                 <TextView
                     style="@style/FreeGames.SystemRequirements.Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Graphics" />
+                    android:text="@string/detail_label_graphics" />
 
                 <TextView
                     android:id="@+id/systemRequirementsGraphicsTextView"
                     style="@style/FreeGames.SystemRequirements.Value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="NVIDIA GeForce GTX 600 series, AMD Radeon HD 7000 series" />
+                    tools:text="NVIDIA GeForce GTX 600 series, AMD Radeon HD 7000 series" />
 
                 <TextView
                     style="@style/FreeGames.SystemRequirements.Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Storage" />
+                    android:text="@string/detail_label_storage" />
 
                 <TextView
                     android:id="@+id/systemRequirementsStorageTextView"
                     style="@style/FreeGames.SystemRequirements.Value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="50 Gb" />
+                    tools:text="50 Gb" />
 
 
             </LinearLayout>
@@ -224,7 +225,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Play" />
+            android:text="@string/detail_button_play"
+            android:backgroundTint="@color/md_theme_tertiary_mediumContrast"/>
 
         <Space
             android:layout_width="16dp"
@@ -233,9 +235,11 @@
         <Button
             android:id="@+id/shareButton"
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-            app:icon="@drawable/ic_search"
+            app:icon="@drawable/ic_share"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:drawableTint="@color/md_theme_tertiary_mediumContrast"
+            android:backgroundTint="@color/md_theme_primaryContainer"/>
 
     </LinearLayout>
 

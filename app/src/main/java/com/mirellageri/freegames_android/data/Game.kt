@@ -14,7 +14,7 @@ data class Game (
     @SerializedName("freetogame_profile_url") val profileUrl: String,
     @SerializedName("game_url") val gameUrl : String,
     @SerializedName("screenshots") val screenshots : List<Screenshot>?,
-    @SerializedName("minimum_system_requirememts") val systemRequirements: SystemRequirements?
+    @SerializedName("minimum_system_requirements") val systemRequirements: SystemRequirements?
 )
 data class Screenshot(
     @SerializedName("image") val image : String

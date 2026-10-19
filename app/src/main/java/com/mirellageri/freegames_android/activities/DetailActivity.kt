@@ -45,9 +45,8 @@ class DetailActivity : AppCompatActivity() {
         //OBTENER EL ID DE MAIN
         val id = intent.getIntExtra(EXTRA_GAME_ID,-1)
         //OBTENER EL JUEGO DEL API CON ID
-        val api = FreeToGameApi.getInstance()
-
         CoroutineScope(Dispatchers.IO).launch {
+            val api = FreeToGameApi.getInstance()
             game = api.getGameById(id)
             CoroutineScope(Dispatchers.Main).launch{
                 //Cargar loadData
@@ -76,13 +75,13 @@ class DetailActivity : AppCompatActivity() {
         binding.genreChip.text = game.genre
         Log.i("API REST",game.platform)
         when(game.platform){
-            "PC (Windows), Web Browser" ->{
+            "Windows, Web Browser" ->{
                 binding.platformPCImageView.setImageResource(R.drawable.ic_platform_pc)
                 binding.platformPCImageView.visibility = View.VISIBLE
                 binding.platformWebImageView.setImageResource(R.drawable.ic_platform_web)
                 binding.platformWebImageView.visibility = View.VISIBLE
             }
-            "PC (Windows)"->  {
+            "Windows"->  {
                 binding.platformPCImageView.setImageResource(R.drawable.ic_platform_pc)
                 binding.platformPCImageView.visibility = View.VISIBLE
                 binding.platformWebImageView.visibility = View.GONE
@@ -95,16 +94,17 @@ class DetailActivity : AppCompatActivity() {
         }
         //DESCRIPTION
         binding.descriptionTextView.text = game.description
+
         // Screenshots
         val adapter = ScreenshotAdapter(game.screenshots ?: emptyList())
         binding.screenshotsRecyclerView.adapter = adapter
 
         // System requirements
-        binding.systemRequirementsOsTextView.text = game.systemRequirements?.os
-        binding.systemRequirementsProcessorTextView.text = game.systemRequirements?.processor
-        binding.systemRequirementsMemoryTextView.text = game.systemRequirements?.memory
-        binding.systemRequirementsGraphicsTextView.text = game.systemRequirements?.graphics
-        binding.systemRequirementsStorageTextView.text = game.systemRequirements?.storage
+        binding.systemRequirementsOsTextView.text = game.systemRequirements?.os?: getString(R.string.detail_without_data)
+        binding.systemRequirementsProcessorTextView.text = game.systemRequirements?.processor?: getString(R.string.detail_without_data)
+        binding.systemRequirementsMemoryTextView.text = game.systemRequirements?.memory?: getString(R.string.detail_without_data)
+        binding.systemRequirementsGraphicsTextView.text = game.systemRequirements?.graphics?: getString(R.string.detail_without_data)
+        binding.systemRequirementsStorageTextView.text = game.systemRequirements?.storage?: getString(R.string.detail_without_data)
 
         // Buttons
         binding.playButton.setOnClickListener {
@@ -114,7 +114,7 @@ class DetailActivity : AppCompatActivity() {
         }
         binding.shareButton.setOnClickListener {
             val sendIntent = Intent(Intent.ACTION_SEND)
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "Mira que juego está gratis: ${game.profileUrl}.")
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "${getString(R.string.detail_share)}: ${game.profileUrl}.")
             sendIntent.type = "text/plain"
 
             val shareIntent = Intent.createChooser(sendIntent, null)

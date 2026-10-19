@@ -143,5 +143,6 @@
     <color name="md_theme_surfaceContainer_highContrast">#DEE3E6</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#D0D5D8</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#C2C7CA</color>
-    <color name="clasic_orange">#FF9800</color>
+    <color name="classic_orange">#FF9800</color>
+    <color name="card_stroke_main">#8FFBD445</color>
 </resources>

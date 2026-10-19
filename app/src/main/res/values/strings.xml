@@ -3,8 +3,16 @@
     <string name="menu_search">Search</string>
     <string name="main_title">Free Games</string>
     <string name="nav_label_games">Games</string>
-    <string name="nav_label_library">Library</string>
+    <string name="nav_label_library">Favorites</string>
     <string name="description_label_detail">Description</string>
     <string name="screenshot_label_detail">Screenshot</string>
     <string name="system_requirements_label_detail">System requirements</string>
+    <string name="detail_label_OS">OS</string>
+    <string name="detail_label_processor">Processor</string>
+    <string name="detail_label_memory">Memory</string>
+    <string name="detail_label_graphics">Graphics</string>
+    <string name="detail_label_storage">Storage</string>
+    <string name="detail_button_play">Play</string>
+    <string name="detail_share">Look this game is Free</string>
+    <string name="detail_without_data">-------------</string>
 </resources>
