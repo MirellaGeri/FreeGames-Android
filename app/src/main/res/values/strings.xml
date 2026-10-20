@@ -14,5 +14,7 @@
     <string name="detail_label_storage">Storage</string>
     <string name="detail_button_play">Play</string>
     <string name="detail_share">Look this game is Free</string>
+    <string name="detail_label_show_more">Show More …</string>
+    <string name="detail_label_show_less">Show Less …</string>
     <string name="detail_without_data">-------------</string>
 </resources>

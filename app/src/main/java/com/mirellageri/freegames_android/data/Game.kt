@@ -12,6 +12,7 @@ data class Game (
     @SerializedName("genre") val genre: String,
     @SerializedName("platform") val platform : String,
     @SerializedName("freetogame_profile_url") val profileUrl: String,
+    @SerializedName("developer") val developer: String,
     @SerializedName("game_url") val gameUrl : String,
     @SerializedName("screenshots") val screenshots : List<Screenshot>?,
     @SerializedName("minimum_system_requirements") val systemRequirements: SystemRequirements?

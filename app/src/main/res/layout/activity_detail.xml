@@ -20,12 +20,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <!--HERO-->
-            <ImageView
-                android:id="@+id/thumbnailImageView"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                tools:src="@drawable/ic_launcher_background"
-                android:scaleType="centerCrop"/>
+                android:layout_height="240dp">
+                <VideoView
+                    android:id="@+id/trailerVideoView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:id="@+id/thumbnailImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:src="@drawable/ic_launcher_background"
+                    android:scaleType="centerCrop"/>
+            </FrameLayout>
             <!--BASIC INFO-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,7 +103,17 @@
                     android:id="@+id/descriptionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Lorem ipsum" />
+                    android:textSize="18sp"
+                    tools:text="Lorem ipsum"
+                    android:ellipsize="end"
+                    android:maxLines="5"/>
+                <TextView
+                    android:id="@+id/showMoreTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold|italic"
+                    android:text="@string/detail_label_show_more"
+                    android:textColor="@color/md_theme_primaryContainer_highContrast"/>
             </LinearLayout>
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"

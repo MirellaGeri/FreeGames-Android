@@ -18,7 +18,9 @@ import com.mirellageri.freegames_android.databinding.ActivityDetailBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 class DetailActivity : AppCompatActivity() {
     companion object{
@@ -27,6 +29,7 @@ class DetailActivity : AppCompatActivity() {
     }
     lateinit var binding: ActivityDetailBinding
     lateinit var game: Game
+    var showMoreEnabled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,11 +68,28 @@ class DetailActivity : AppCompatActivity() {
         }
     }
     fun loadData(){
+        //MENU
         supportActionBar?.title = game.title
-        //supportActionBar?.subtitle = game.developer
+        supportActionBar?.subtitle = game.developer
 
-        //HERO IMAGE
+        //HERO
+            //Video
+        binding.trailerVideoView.setVideoURI("https://www.freetogame.com/g/${game.id}/videoplayback.webm".toUri())
+        binding.trailerVideoView.setOnPreparedListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                delay(3000.milliseconds)
+                CoroutineScope(Dispatchers.Main).launch {
+                    binding.thumbnailImageView.visibility=View.GONE
+                    binding.trailerVideoView.start()
+                }
+            }
+        }
+        binding.trailerVideoView.setOnCompletionListener {
+            binding.thumbnailImageView.visibility = View.VISIBLE
+        }
+            //Image
         Picasso.get().load(game.thumbnail).into(binding.thumbnailImageView)
+
         //BASIC INFO
         binding.titleTextView.text = game.title
         binding.genreChip.text = game.genre
@@ -92,8 +112,19 @@ class DetailActivity : AppCompatActivity() {
                 binding.platformPCImageView.visibility = View.GONE
             }
         }
+
         //DESCRIPTION
         binding.descriptionTextView.text = game.description
+        binding.showMoreTextView.setOnClickListener {
+            if(showMoreEnabled){
+                binding.descriptionTextView.maxLines = 5
+                binding.showMoreTextView.text = getString(R.string.detail_label_show_more)
+            }else{
+                binding.descriptionTextView.maxLines = Int.MAX_VALUE
+                binding.showMoreTextView.text = getString(R.string.detail_label_show_less)
+            }
+            showMoreEnabled = !showMoreEnabled
+        }
 
         // Screenshots
         val adapter = ScreenshotAdapter(game.screenshots ?: emptyList())
