@@ -38,7 +38,7 @@ class GalleryAdapter(
 
 class GalleryViewHolder(val binding: ItemGalleryBinding): RecyclerView.ViewHolder(binding.root){
     fun render(screenshot: Screenshot) {
-        Picasso.get().load(screenshot.image).placeholder(R.drawable.ic_launcher_background)
+        Picasso.get().load(screenshot.image).placeholder(R.drawable.bg_image_placeholder)
             .into(binding.screenshotImageView)
     }
     fun setSelected(selected: Boolean){

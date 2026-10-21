@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mirellageri.freegames_android.R
 import com.mirellageri.freegames_android.adapters.GalleryAdapter
 import com.mirellageri.freegames_android.data.FreeToGameApi
@@ -126,13 +127,15 @@ class DetailActivity : AppCompatActivity() {
             showMoreEnabled = !showMoreEnabled
         }
 
-        // Screenshots
-        val adapter = GalleryAdapter(game.screenshots ?: emptyList(),-1){position ->
+        // Screenshots                       ?: emptyList()
+        val adapter = GalleryAdapter(game.screenshots ,-1){position ->
+            val intent = Intent(this, GalleryActivity::class.java)
             intent.putExtra(GalleryActivity.EXTRA_SCREENSHOT_INDEX,position)
             intent.putExtra(GalleryActivity.EXTRA_SCREENSHOTS_ARRAY,game.screenshots.map{it.image}.toTypedArray())
+            startActivity(intent)
         }
         binding.screenshotsRecyclerView.adapter = adapter
-        //TODO el codigo que manda al linear layout
+        binding.screenshotsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
 
         // System requirements
         binding.systemRequirementsOsTextView.text = game.systemRequirements?.os?: getString(R.string.detail_without_data)

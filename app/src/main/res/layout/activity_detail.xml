@@ -31,7 +31,7 @@
                     android:id="@+id/thumbnailImageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:src="@drawable/ic_launcher_background"
+                    tools:src="@drawable/bg_image_placeholder"
                     android:scaleType="centerCrop"/>
             </FrameLayout>
             <!--BASIC INFO-->
@@ -135,7 +135,7 @@
                 android:orientation="horizontal"
                 android:paddingHorizontal="12dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_screenshot" />
+                tools:listitem="@layout/item_gallery" />
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
